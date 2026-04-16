@@ -1,14 +1,10 @@
 import requests
 import json
 import fitz
-import os
-from pathlib import Path
 
 
 def procesar_bloque_llama3(texto_bloque, inicio_id):
-    ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-    model = os.getenv("OLLAMA_MODEL", "llama3")
-    url = f"{ollama_base_url}/api/generate"
+    url = "http://localhost:11434/api/generate"
     
     prompt = f"""
     SISTEMA: Eres un extractor de datos especializado en documentos legales. Tu salida debe ser exclusivamente un JSON válido.
@@ -39,7 +35,7 @@ def procesar_bloque_llama3(texto_bloque, inicio_id):
     """
 
     payload = {
-        "model": model,
+        "model": "llama3",
         "prompt": prompt,
         "stream": False,
         "format": "json",
@@ -47,26 +43,10 @@ def procesar_bloque_llama3(texto_bloque, inicio_id):
     }
 
     response = requests.post(url, json=payload, timeout=300)
-    response.raise_for_status()
-    body = response.json()
-
-    if "error" in body:
-        raise RuntimeError(f"Ollama error con modelo '{model}': {body['error']}")
-
-    if "response" not in body:
-        raise RuntimeError(f"Respuesta inesperada de Ollama: {json.dumps(body, ensure_ascii=False)}")
-
-    parsed = json.loads(body["response"])
-    clausulas = parsed.get("clausulas", [])
-    if not isinstance(clausulas, list):
-        raise RuntimeError(f"Formato inesperado de salida: {json.dumps(parsed, ensure_ascii=False)}")
-
-    return clausulas
+    # Extraemos la lista de la respuesta
+    return json.loads(response.json()['response'])['clausulas']
 
 def extraer_todo_el_contrato(ruta_pdf):
-    if not Path(ruta_pdf).exists():
-        raise FileNotFoundError(f"No existe el PDF de entrada: {ruta_pdf}")
-
     doc = fitz.open(ruta_pdf)
     texto_completo = ""
     for pagina in doc:
@@ -87,23 +67,17 @@ def extraer_todo_el_contrato(ruta_pdf):
     clausulas_p2 = procesar_bloque_llama3(parte2, siguiente_id)
 
     resultado_final = {
-        "archivo": Path(ruta_pdf).name,
+        "archivo": ruta_pdf.split('/')[-1],
         "total": len(clausulas_p1) + len(clausulas_p2),
         "clausulas": clausulas_p1 + clausulas_p2
     }
     return resultado_final
 
 # --- EJECUCIÓN ---
-ruta = os.getenv("PDF_PATH", str(Path("data") / "contratoPrueba.pdf"))
-salida_json = os.getenv("OUTPUT_JSON", str(Path("data") / "clausulas_extraidas.json"))
+ruta = "data\contratoPrueba.pdf"
 try:
     final = extraer_todo_el_contrato(ruta)
-    Path(salida_json).parent.mkdir(parents=True, exist_ok=True)
-    with open(salida_json, "w", encoding="utf-8") as f:
-        json.dump(final, f, indent=4, ensure_ascii=False)
-
     print("\n✅ CONTRATO COMPLETO EXTRAÍDO:")
     print(json.dumps(final, indent=4, ensure_ascii=False))
-    print(f"\n💾 Resultado guardado en: {salida_json}")
 except Exception as e:
     print(f"❌ Error: {e}")
