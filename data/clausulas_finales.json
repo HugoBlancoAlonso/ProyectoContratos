@@ -1,0 +1,204 @@
+{
+  "regulacion": {
+    "sometimiento_LAU": {
+      "valor": true,
+      "ejemplo": "El presente contrato se regirá por la Ley de Arrendamientos Urbanos."
+    },
+    "sometimiento_LAU_incorrecto": {
+      "valor": false,
+      "ejemplo": "El contrato no se regirá por la Ley de Arrendamientos Urbanos, sino por lo que disponga el arrendador."
+    },
+    "aplicacion_codigo_civil_supletoria": {
+      "valor": true,
+      "ejemplo": "En lo no previsto en este contrato se aplicará el Código Civil."
+    },
+    "aplicacion_codigo_civil_excluida": {
+      "valor": false,
+      "ejemplo": "No será de aplicación ninguna normativa supletoria distinta de lo pactado por el arrendador."
+    }
+  },
+  "objeto_uso": {
+    "uso_vivienda_habitual": {
+      "valor": true,
+      "ejemplo": "La vivienda se destinará a residencia habitual del arrendatario."
+    },
+    "uso_no_definido": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá modificar el uso de la vivienda en cualquier momento."
+    },
+    "uso_temporal_justificado": {
+      "valor": true,
+      "ejemplo": "El arrendamiento tiene carácter temporal por motivos laborales."
+    },
+    "uso_temporal_ficticio": {
+      "valor": false,
+      "ejemplo": "El contrato se declara temporal sin causa justificada para evitar prórrogas legales."
+    },
+    "uso_habitacion_individual": {
+      "valor": true,
+      "ejemplo": "Se arrienda únicamente una habitación dentro de la vivienda."
+    },
+    "limitacion_uso_habitacion_arbitraria": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá cambiar la habitación asignada sin previo aviso."
+    },
+    "entrega_llaves_posesion": {
+      "valor": true,
+      "ejemplo": "En este acto se hace entrega de las llaves al arrendatario."
+    },
+    "no_entrega_llaves": {
+      "valor": false,
+      "ejemplo": "La entrega de llaves quedará a discreción del arrendador."
+    },
+    "estado_conocido_por_inquilino": {
+      "valor": true,
+      "ejemplo": "El arrendatario declara conocer el estado del inmueble."
+    },
+    "estado_impuesto_inquilino": {
+      "valor": false,
+      "ejemplo": "El arrendatario acepta cualquier estado del inmueble sin posibilidad de reclamación."
+    },
+    "destino_exclusivo_pactado": {
+      "valor": true,
+      "ejemplo": "El inmueble se destinará exclusivamente a uso de vivienda."
+    },
+    "uso_no_exclusivo": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá usar la vivienda durante el contrato sin consentimiento."
+    }
+  },
+  "limitaciones_uso": {
+    "prohibicion_uso_distinto": {
+      "valor": true,
+      "ejemplo": "Queda prohibido destinar la vivienda a usos distintos al pactado."
+    },
+    "uso_arbitrario_arrendador": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá decidir en cualquier momento el uso permitido de la vivienda."
+    },
+    "prohibicion_actividades_ilicitas": {
+      "valor": true,
+      "ejemplo": "Se prohíbe la realización de actividades ilícitas en la vivienda."
+    },
+    "actividades_indeterminadas": {
+      "valor": false,
+      "ejemplo": "Se prohíben actividades no definidas a criterio del arrendador."
+    },
+    "prohibicion_subarriendo_sin_consentimiento": {
+      "valor": true,
+      "ejemplo": "No se podrá subarrendar sin autorización expresa del arrendador."
+    },
+    "subarriendo_prohibido_absoluto": {
+      "valor": false,
+      "ejemplo": "Se prohíbe el subarriendo incluso con consentimiento."
+    },
+    "prohibicion_cesion_sin_consentimiento": {
+      "valor": true,
+      "ejemplo": "Queda prohibida la cesión del contrato sin consentimiento."
+    },
+    "cesion_prohibida_total": {
+      "valor": false,
+      "ejemplo": "Se prohíbe cualquier cesión sin excepción."
+    },
+    "prohibicion_uso_comercial": {
+      "valor": true,
+      "ejemplo": "La vivienda no podrá destinarse a actividades comerciales."
+    },
+    "uso_restringido_excesivo": {
+      "valor": false,
+      "ejemplo": "El arrendatario no podrá recibir visitas ni usar libremente la vivienda."
+    },
+    "cumplimiento_normas_comunidad": {
+      "valor": true,
+      "ejemplo": "El arrendatario deberá cumplir las normas de la comunidad."
+    },
+    "normas_unilaterales": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá imponer normas adicionales en cualquier momento."
+    },
+    "respeto_convivencia_vecinal": {
+      "valor": true,
+      "ejemplo": "El arrendatario respetará la convivencia con los vecinos."
+    },
+    "convivencia_controlada": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá controlar el comportamiento del arrendatario."
+    }
+  },
+  "duracion_prorrogas": {
+    "duracion_inicial_pactada": {
+      "valor": true,
+      "ejemplo": "La duración inicial del contrato será de un año."
+    },
+    "duracion_impuesta": {
+      "valor": false,
+      "ejemplo": "La duración será la que decida el arrendador en cada momento."
+    },
+    "prorrogas_legales_LAU": {
+      "valor": true,
+      "ejemplo": "El contrato se prorrogará conforme a la legislación vigente."
+    },
+    "sin_prorrogas_legales": {
+      "valor": false,
+      "ejemplo": "El contrato no estará sujeto a prórrogas legales obligatorias."
+    },
+    "preaviso_no_renovacion": {
+      "valor": true,
+      "ejemplo": "Se deberá preavisar con 30 días la no renovación."
+    },
+    "preaviso_excesivo": {
+      "valor": false,
+      "ejemplo": "Se exigirá un preaviso de 6 meses para no renovar."
+    },
+    "recuperacion_vivienda_por_necesidad": {
+      "valor": true,
+      "ejemplo": "El arrendador podrá recuperar la vivienda por necesidad propia."
+    },
+    "recuperacion_sin_causa": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá recuperar la vivienda sin necesidad de justificarlo."
+    },
+    "contrato_temporal_sin_prorroga": {
+      "valor": true,
+      "ejemplo": "Contrato temporal que no estará sujeto a prórroga obligatoria."
+    },
+    "temporalidad_fraudulenta": {
+      "valor": false,
+      "ejemplo": "Se establece duración temporal para evitar derechos del arrendatario."
+    }
+  },
+  "desistimiento_finalizacion": {
+    "derecho_desistimiento_tras_6_meses": {
+      "valor": true,
+      "ejemplo": "El arrendatario podrá desistir tras seis meses."
+    },
+    "sin_derecho_desistimiento": {
+      "valor": false,
+      "ejemplo": "El arrendatario no podrá desistir del contrato en ningún caso."
+    },
+    "preaviso_30_dias": {
+      "valor": true,
+      "ejemplo": "Se deberá comunicar con 30 días de antelación."
+    },
+    "preaviso_excesivo_desistimiento": {
+      "valor": false,
+      "ejemplo": "Se exigirá un preaviso de 90 días para desistir."
+    },
+    "indemnizacion_proporcional": {
+      "valor": true,
+      "ejemplo": "Se abonará una indemnización proporcional al tiempo restante."
+    },
+    "indemnizacion_desproporcionada": {
+      "valor": false,
+      "ejemplo": "Se exigirá el pago de todas las mensualidades restantes."
+    },
+    "finalizacion_por_expiracion_plazo": {
+      "valor": true,
+      "ejemplo": "El contrato finalizará al cumplirse el plazo pactado."
+    },
+    "finalizacion_arbitraria": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá finalizar el contrato en cualquier momento."
+    }
+  }
+}
