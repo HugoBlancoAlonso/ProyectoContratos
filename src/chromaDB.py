@@ -2,7 +2,7 @@ import chromadb
 import json
 
 # 1. Cargar tu JSON
-with open('data\clausulas_finales.json', 'r', encoding='utf-8') as f:
+with open('data/clausulas_finales.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 client = chromadb.PersistentClient(path="./clausulas_db")
