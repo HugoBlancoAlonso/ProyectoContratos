@@ -1,0 +1,467 @@
+{
+  "regulacion": {
+    "sometimiento_LAU": {
+      "valor": true,
+      "ejemplo": "El presente contrato se regirá por la Ley de Arrendamientos Urbanos."
+    },
+    "sometimiento_LAU_incorrecto": {
+      "valor": false,
+      "ejemplo": "El contrato no se regirá por la Ley de Arrendamientos Urbanos, sino por lo que disponga el arrendador.",
+      "explicacion": "Es abusiva porque los derechos de la LAU son irrenunciables para el arrendatario en contratos de vivienda habitual (Art. 6 LAU)."
+    },
+    "aplicacion_codigo_civil_supletoria": {
+      "valor": true,
+      "ejemplo": "En lo no previsto en este contrato se aplicará el Código Civil."
+    },
+    "aplicacion_codigo_civil_excluida": {
+      "valor": false,
+      "ejemplo": "No será de aplicación ninguna normativa supletoria distinta de lo pactado por el arrendador.",
+      "explicacion": "Vulnera el principio de jerarquía normativa y el carácter supletorio obligatorio del Código Civil."
+    }
+  },
+  "objeto_uso": {
+    "uso_vivienda_habitual": {
+      "valor": true,
+      "ejemplo": "La vivienda se destinará a residencia habitual del arrendatario."
+    },
+    "uso_no_definido": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá modificar el uso de la vivienda en cualquier momento.",
+      "explicacion": "El destino de la finca es un elemento esencial del contrato que no puede quedar al arbitrio de una sola parte."
+    },
+    "uso_temporal_justificado": {
+      "valor": true,
+      "ejemplo": "El arrendamiento tiene carácter temporal por motivos laborales."
+    },
+    "uso_temporal_ficticio": {
+      "valor": false,
+      "ejemplo": "El contrato se declara temporal sin causa justificada para evitar prórrogas legales.",
+      "explicacion": "Se considera fraude de ley; si la vivienda es la residencia permanente, se aplican las prórrogas de vivienda habitual."
+    },
+    "uso_habitacion_individual": {
+      "valor": true,
+      "ejemplo": "Se arrienda únicamente una habitación dentro de la vivienda."
+    },
+    "limitacion_uso_habitacion_arbitraria": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá cambiar la habitación asignada sin previo aviso.",
+      "explicacion": "Vulnera la posesión del espacio privativo pactado y genera inseguridad jurídica al inquilino."
+    },
+    "entrega_llaves_posesion": {
+      "valor": true,
+      "ejemplo": "En este acto se hace entrega de las llaves al arrendatario."
+    },
+    "no_entrega_llaves": {
+      "valor": false,
+      "ejemplo": "La entrega de llaves quedará a discreción del arrendador.",
+      "explicacion": "La entrega de la posesión es la obligación principal del arrendador tras el pago de la fianza y firma."
+    },
+    "estado_conocido_por_inquilino": {
+      "valor": true,
+      "ejemplo": "El arrendatario declara conocer el estado del inmueble."
+    },
+    "estado_impuesto_inquilino": {
+      "valor": false,
+      "ejemplo": "El arrendatario acepta cualquier estado del inmueble sin posibilidad de reclamación.",
+      "explicacion": "Es abusiva porque limita el derecho del inquilino a reclamar por vicios ocultos o falta de habitabilidad."
+    },
+    "destino_exclusivo_pactado": {
+      "valor": true,
+      "ejemplo": "El inmueble se destinará exclusivamente a uso de vivienda."
+    },
+    "uso_no_exclusivo": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá usar la vivienda durante el contrato sin consentimiento.",
+      "explicacion": "Vulnera el derecho a la inviolabilidad del domicilio y la exclusividad de uso otorgada por el alquiler."
+    },
+    "inventario_anexo_verificado": {
+      "valor": true,
+      "ejemplo": "Se adjunta inventario detallado de muebles y enseres que el inquilino confirma recibir."
+    },
+    "inventario_generico_impuesto": {
+      "valor": false,
+      "ejemplo": "El inquilino admite que la vivienda está amueblada de lujo sin detallar elementos ni estado.",
+      "explicacion": "Es una cláusula de adhesión que impide al inquilino demostrar el estado real de los muebles al entrar."
+    }
+  },
+  "limitaciones_uso": {
+    "prohibicion_uso_distinto": {
+      "valor": true,
+      "ejemplo": "Queda prohibido destinar la vivienda a usos distintos al pactado."
+    },
+    "uso_arbitrario_arrendador": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá decidir en cualquier momento el uso permitido de la vivienda.",
+      "explicacion": "Las condiciones de uso deben estar fijadas contractualmente y no depender de la voluntad unilateral del dueño."
+    },
+    "prohibicion_actividades_ilicitas": {
+      "valor": true,
+      "ejemplo": "Se prohíbe la realización de actividades ilícitas en la vivienda."
+    },
+    "actividades_indeterminadas": {
+      "valor": false,
+      "ejemplo": "Se prohíben actividades no definidas a criterio del arrendador.",
+      "explicacion": "Cualquier limitación de la libertad del inquilino debe ser específica y no quedar abierta a interpretación subjetiva."
+    },
+    "prohibicion_subarriendo_sin_consentimiento": {
+      "valor": true,
+      "ejemplo": "No se podrá subarrendar sin autorización expresa del arrendador."
+    },
+    "subarriendo_prohibido_absoluto": {
+      "valor": false,
+      "ejemplo": "Se prohíbe el subarriendo incluso con consentimiento.",
+      "explicacion": "Aunque la ley exige permiso, una prohibición absoluta y previa que impida el consentimiento posterior limita la autonomía de las partes."
+    },
+    "prohibicion_cesion_sin_consentimiento": {
+      "valor": true,
+      "ejemplo": "Queda prohibida la cesión del contrato sin consentimiento."
+    },
+    "cesion_prohibida_total": {
+      "valor": false,
+      "ejemplo": "Se prohíbe cualquier cesión sin excepción.",
+      "explicacion": "Es una restricción excesiva que no permite la subrogación legal en casos de fallecimiento o separación."
+    },
+    "prohibicion_uso_comercial": {
+      "valor": true,
+      "ejemplo": "La vivienda no podrá destinarse a actividades comerciales."
+    },
+    "uso_restringido_excesivo": {
+      "valor": false,
+      "ejemplo": "El arrendatario no podrá recibir visitas ni usar libremente la vivienda.",
+      "explicacion": "Vulnera el derecho constitucional a la intimidad y al libre desarrollo de la personalidad en el propio hogar."
+    },
+    "cumplimiento_normas_comunidad": {
+      "valor": true,
+      "ejemplo": "El arrendatario deberá cumplir las normas de la comunidad."
+    },
+    "normas_unilaterales": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá imponer normas adicionales en cualquier momento.",
+      "explicacion": "El inquilino solo está obligado por las normas legales y de la comunidad existentes, no por caprichos del dueño."
+    },
+    "respeto_convivencia_vecinal": {
+      "valor": true,
+      "ejemplo": "El arrendatario respetará la convivencia con los vecinos."
+    },
+    "convivencia_controlada": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá controlar el comportamiento del arrendatario.",
+      "explicacion": "Supone una injerencia ilegítima en la vida privada del inquilino, prohibida por ley."
+    }
+  },
+  "duracion_prorrogas": {
+    "duracion_inicial_pactada": {
+      "valor": true,
+      "ejemplo": "La duración inicial del contrato será de un año."
+    },
+    "duracion_impuesta": {
+      "valor": false,
+      "ejemplo": "La duración será la que decida el arrendador en cada momento.",
+      "explicacion": "Contraviene el Art. 9 de la LAU, que establece plazos mínimos de prórroga obligatoria para el arrendador."
+    },
+    "prorrogas_legales_LAU": {
+      "valor": true,
+      "ejemplo": "El contrato se prorrogará conforme a la legislación vigente."
+    },
+    "sin_prorrogas_legales": {
+      "valor": false,
+      "ejemplo": "El contrato no estará sujeto a prórrogas legales obligatorias.",
+      "explicacion": "Nula de pleno derecho. El inquilino tiene derecho a prórrogas anuales hasta completar 5 o 7 años según el arrendador."
+    },
+    "preaviso_no_renovacion": {
+      "valor": true,
+      "ejemplo": "Se deberá preavisar con 30 días la no renovación."
+    },
+    "preaviso_excesivo": {
+      "valor": false,
+      "ejemplo": "Se exigirá un preaviso de 6 meses para no renovar.",
+      "explicacion": "Es desproporcionado respecto a los plazos legales, limitando la libertad de movimiento del arrendatario."
+    },
+    "recuperacion_vivienda_por_necesidad": {
+      "valor": true,
+      "ejemplo": "El arrendador podrá recuperar la vivienda por necesidad propia."
+    },
+    "recuperacion_sin_causa": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá recuperar la vivienda sin necesidad de justificarlo.",
+      "explicacion": "La recuperación anticipada por el dueño solo es legal si se especifica la necesidad para sí o familiares (Art. 9.3 LAU)."
+    },
+    "contrato_temporal_sin_prorroga": {
+      "valor": true,
+      "ejemplo": "Contrato temporal que no estará sujeto a prórroga obligatoria."
+    },
+    "temporalidad_fraudulenta": {
+      "valor": false,
+      "ejemplo": "Se establece duración temporal para evitar derechos del arrendatario.",
+      "explicacion": "El fraude en la causa de temporalidad convierte el contrato automáticamente en uno de vivienda habitual."
+    },
+    "tacita_reconduccion_legal": {
+      "valor": true,
+      "ejemplo": "Al finalizar las prórrogas, operará la tácita reconducción según el Código Civil."
+    },
+    "renuncia_tacita_reconduccion": {
+      "valor": false,
+      "ejemplo": "El inquilino renuncia irrevocablemente a cualquier tipo de prórroga o reconducción tras el vencimiento.",
+      "explicacion": "No se puede renunciar de antemano a derechos futuros otorgados por el Código Civil en materia de reconducción."
+    }
+  },
+  "desistimiento_finalizacion": {
+    "derecho_desistimiento_tras_6_meses": {
+      "valor": true,
+      "ejemplo": "El arrendatario podrá desistir tras seis meses."
+    },
+    "sin_derecho_desistimiento": {
+      "valor": false,
+      "ejemplo": "El arrendatario no podrá desistir del contrato en ningún caso.",
+      "explicacion": "El Art. 11 de la LAU garantiza el derecho a desistir tras los primeros 6 meses de contrato."
+    },
+    "preaviso_30_dias": {
+      "valor": true,
+      "ejemplo": "Se deberá comunicar con 30 días de antelación."
+    },
+    "preaviso_excesivo_desistimiento": {
+      "valor": false,
+      "ejemplo": "Se exigirá un preaviso de 90 días para desistir.",
+      "explicacion": "La ley marca un máximo de 30 días para el preaviso de desistimiento por parte del inquilino."
+    },
+    "indemnizacion_proporcional": {
+      "valor": true,
+      "ejemplo": "Se abonará una indemnización proporcional al tiempo restante."
+    },
+    "indemnizacion_desproporcionada": {
+      "valor": false,
+      "ejemplo": "Se exigirá el pago de todas las mensualidades restantes.",
+      "explicacion": "La indemnización máxima legal es de una mensualidad por cada año incumplido (prorrateado)."
+    },
+    "finalizacion_por_expiracion_plazo": {
+      "valor": true,
+      "ejemplo": "El contrato finalizará al cumplirse el plazo pactado."
+    },
+    "finalizacion_arbitraria": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá finalizar el contrato en cualquier momento.",
+      "explicacion": "Vulnera la estabilidad contractual y los plazos de prórroga obligatorios establecidos en la LAU."
+    }
+  },
+  "gastos_y_suministros": {
+    "gastos_individualizados_inquilino": {
+      "valor": true,
+      "ejemplo": "Los gastos por suministros con contador individual serán a cargo del arrendatario."
+    },
+    "gastos_indeterminados_inquilino": {
+      "valor": false,
+      "ejemplo": "El arrendatario pagará una cantidad fija mensual por suministros, sin derecho a liquidación.",
+      "explicacion": "Los pagos de suministros deben corresponder al consumo real según factura o contador."
+    },
+    "gastos_comunidad_pactados": {
+      "valor": true,
+      "ejemplo": "Los gastos de comunidad serán abonados por el arrendatario según lo pactado expresamente."
+    },
+    "gastos_comunidad_no_cuantificados": {
+      "valor": false,
+      "ejemplo": "El arrendatario pagará los gastos de comunidad, pudiendo estos subir sin límite.",
+      "explicacion": "Para que el inquilino pague la comunidad, debe constar el importe anual exacto en el contrato (Art. 20 LAU)."
+    },
+    "impuestos_ibi_pactado": {
+      "valor": true,
+      "ejemplo": "Las partes acuerdan que el IBI sea satisfecho por el arrendatario."
+    },
+    "impuestos_obligatorios_inquilino": {
+      "valor": false,
+      "ejemplo": "El arrendatario está obligado por ley a pagar todos los impuestos que graven la propiedad.",
+      "explicacion": "Es falso; el responsable legal de impuestos como el IBI es el propietario, aunque se pueda pactar su repercusión."
+    },
+    "reparaciones_conservacion_arrendador": {
+      "valor": true,
+      "ejemplo": "El arrendador realizará las reparaciones necesarias para conservar la habitabilidad."
+    },
+    "reparaciones_todas_inquilino": {
+      "valor": false,
+      "ejemplo": "Todas las reparaciones, incluidas las estructurales, serán a cargo del inquilino.",
+      "explicacion": "El Art. 21 LAU obliga al arrendador a costear reparaciones necesarias para la habitabilidad."
+    },
+    "pequenas_reparaciones_uso_ordinario": {
+      "valor": true,
+      "ejemplo": "Las pequeñas reparaciones por el uso ordinario serán a cargo del arrendatario."
+    },
+    "mantenimiento_instalaciones_general": {
+      "valor": false,
+      "ejemplo": "El inquilino es responsable del mantenimiento total de caldera y aire acondicionado, sea cual sea la avería.",
+      "explicacion": "Si la avería no es por mal uso o pequeña reparación (piezas baratas), el coste recae en el propietario."
+    }
+  },
+  "fianza_y_garantias": {
+    "fianza_legal_un_mes": {
+      "valor": true,
+      "ejemplo": "A la firma del contrato se entrega un mes de renta en concepto de fianza legal."
+    },
+    "fianza_excesiva_sin_limite": {
+      "valor": false,
+      "ejemplo": "El arrendatario entrega cinco meses de renta en concepto de fianza legal para vivienda habitual.",
+      "explicacion": "La fianza 'legal' es obligatoriamente de un mes. Superar este límite sin llamarlo 'garantía adicional' es incorrecto."
+    },
+    "devolucion_fianza_plazo_legal": {
+      "valor": true,
+      "ejemplo": "La fianza se devolverá al finalizar el contrato, una vez revisado el inmueble."
+    },
+    "retencion_arbitraria_fianza": {
+      "valor": false,
+      "ejemplo": "El arrendador retendrá la fianza íntegra si el inquilino no pinta la vivienda al salir.",
+      "explicacion": "La fianza solo cubre daños anormales, no el desgaste por uso ordinario como pequeñas marcas en pintura."
+    },
+    "garantia_adicional_limitada": {
+      "valor": true,
+      "ejemplo": "Se pacta una garantía adicional de dos mensualidades de renta."
+    },
+    "garantia_adicional_ilimitada": {
+      "valor": false,
+      "ejemplo": "El arrendatario deberá aportar un aval bancario por el valor de dos años de renta.",
+      "explicacion": "En vivienda habitual, las garantías adicionales a la fianza están limitadas a un máximo de dos meses de renta (Art. 36.5 LAU)."
+    },
+    "actualizacion_fianza_legal": {
+      "valor": true,
+      "ejemplo": "La fianza no se actualizará durante los primeros cinco años de vigencia."
+    },
+    "actualizacion_fianza_anual": {
+      "valor": false,
+      "ejemplo": "El arrendador exigirá la actualización de la fianza anualmente según el mercado.",
+      "explicacion": "La fianza no se puede actualizar durante los primeros 5 o 7 años de contrato."
+    },
+    "deposito_en_organismo_publico": {
+      "valor": true,
+      "ejemplo": "El arrendador depositará la fianza en el organismo autonómico correspondiente."
+    },
+    "custodia_privada_fianza": {
+      "valor": false,
+      "ejemplo": "La fianza quedará en poder exclusivo del arrendador sin obligación de depósito legal.",
+      "explicacion": "El depósito de la fianza en organismos públicos (como el IVIMA o INCASÒL) es obligatorio por normativa autonómica."
+    }
+  },
+  "acceso_y_obras": {
+    "acceso_autorizado_reparaciones": {
+      "valor": true,
+      "ejemplo": "El arrendatario permitirá el acceso al arrendador para realizar obras de conservación."
+    },
+    "acceso_libre_arrendador": {
+      "valor": false,
+      "ejemplo": "El arrendador podrá entrar en la vivienda cuando lo desee para inspeccionar su estado.",
+      "explicacion": "Vulnera la inviolabilidad del domicilio protegida por la Constitución (Art. 18.2 CE)."
+    },
+    "obras_mejora_con_preaviso": {
+      "valor": true,
+      "ejemplo": "El arrendador podrá realizar obras de mejora tras el tercer año con preaviso de tres meses."
+    },
+    "obras_imprevistas_sin_indemnizacion": {
+      "valor": false,
+      "ejemplo": "El arrendatario soportará cualquier obra de mejora sin derecho a reducción de renta.",
+      "explicacion": "Si la obra priva al inquilino de parte de la vivienda, tiene derecho a una reducción proporcional de la renta."
+    },
+    "prohibicion_obras_sin_permiso": {
+      "valor": true,
+      "ejemplo": "El inquilino no podrá realizar obras sin el consentimiento por escrito del propietario."
+    },
+    "apropiacion_mejoras_sin_compensacion": {
+      "valor": false,
+      "ejemplo": "Cualquier mejora realizada por el inquilino quedará en beneficio de la propiedad sin abono de coste.",
+      "explicacion": "Depende del pacto, pero imponer la pérdida de lo invertido en obras autorizadas puede considerarse enriquecimiento injusto."
+    }
+  },
+  "renta_y_pagos": {
+    "pago_mensual_vencido": {
+      "valor": true,
+      "ejemplo": "La renta se pagará mensualmente dentro de los siete primeros días de cada mes."
+    },
+    "pago_anticipado_excesivo": {
+      "valor": false,
+      "ejemplo": "El inquilino deberá pagar por adelantado seis mensualidades de renta al inicio del año.",
+      "explicacion": "El Art. 17.2 LAU prohíbe el pago anticipado de más de una mensualidad de renta."
+    },
+    "lugar_pago_transferencia": {
+      "valor": true,
+      "ejemplo": "El pago de la renta se realizará mediante transferencia bancaria."
+    },
+    "pago_en_efectivo_sin_recibo": {
+      "valor": false,
+      "ejemplo": "El pago se hará en efectivo en el domicilio del arrendador sin obligación de entregar recibo.",
+      "explicacion": "El arrendador está obligado por ley a entregar recibo o prueba de pago al inquilino."
+    },
+    "actualizacion_renta_ipc": {
+      "valor": true,
+      "ejemplo": "La renta se actualizará anualmente conforme a la variación del IPC."
+    },
+    "actualizacion_renta_arbitraria": {
+      "valor": false,
+      "ejemplo": "El arrendador subirá la renta un 10% anual independientemente de los índices oficiales.",
+      "explicacion": "La actualización está limitada legalmente y no puede quedar al arbitrio del arrendador."
+    },
+    "exencion_responsabilidad_suministros": {
+      "valor": true,
+      "ejemplo": "El arrendador no responde de cortes de suministro ajenos a su voluntad."
+    },
+    "responsabilidad_averias_ajenas": {
+      "valor": false,
+      "ejemplo": "El arrendador no reparará la calefacción aunque la avería sea por antigüedad de la máquina.",
+      "explicacion": "El mantenimiento de instalaciones básicas de confort es obligación irrenunciable del arrendador."
+    }
+  },
+  "mascotas_y_convivencia": {
+    "permiso_mascotas_pactado": {
+      "valor": true,
+      "ejemplo": "Se permite la tenencia de mascotas siempre que no causen molestias."
+    },
+    "prohibicion_mascotas_unilateral": {
+      "valor": false,
+      "ejemplo": "Se prohíben las mascotas y el incumplimiento dará derecho a desahucio inmediato sin juez.",
+      "explicacion": "Nadie puede ser desahuciado sin una sentencia judicial; el desahucio automático es ilegal."
+    },
+    "responsabilidad_daños_animales": {
+      "valor": true,
+      "ejemplo": "El inquilino responderá de los daños causados por sus animales de compañía."
+    },
+    "penalizacion_presencia_animal": {
+      "valor": false,
+      "ejemplo": "La simple presencia de un animal en la vivienda conllevará una multa de 500 euros diarios.",
+      "explicacion": "Las sanciones pecuniarias unilaterales en contratos civiles suelen ser nulas por desproporcionadas."
+    }
+  },
+  "formalizacion_y_gastos_gestion": {
+    "gastos_contrato_arrendador_persona_juridica": {
+      "valor": true,
+      "ejemplo": "Los gastos de gestión inmobiliaria y formalización serán a cargo del arrendador (empresa)."
+    },
+    "gastos_gestion_siempre_inquilino": {
+      "valor": false,
+      "ejemplo": "El inquilino pagará siempre los gastos de la agencia inmobiliaria, aunque sea una gran tenedora.",
+      "explicacion": "La Ley por el Derecho a la Vivienda establece que estos gastos corresponden al arrendador."
+    },
+    "elevacion_escritura_publica": {
+      "valor": true,
+      "ejemplo": "Cualquiera de las partes podrá solicitar la elevación del contrato a escritura pública."
+    },
+    "prohibicion_registro_propiedad": {
+      "valor": false,
+      "ejemplo": "El inquilino tiene prohibido inscribir el contrato en el Registro de la Propiedad.",
+      "explicacion": "Vulnera el derecho del inquilino a proteger su título frente a terceros mediante la inscripción registral."
+    }
+  },
+  "notificaciones_y_jurisdiccion": {
+    "domicilio_notificaciones_vivienda": {
+      "valor": true,
+      "ejemplo": "Las notificaciones se realizarán en el domicilio de la vivienda arrendada."
+    },
+    "renuncia_notificaciones": {
+      "valor": false,
+      "ejemplo": "El inquilino renuncia a recibir notificaciones judiciales en caso de impago.",
+      "explicacion": "Es nula porque vulnera el derecho fundamental a la tutela judicial efectiva y a la defensa."
+    },
+    "sumision_juzgados_lugar_finca": {
+      "valor": true,
+      "ejemplo": "Las partes se someten a los juzgados del lugar donde radica la finca."
+    },
+    "sumision_juzgados_distantes": {
+      "valor": false,
+      "ejemplo": "Cualquier litigio se resolverá en los juzgados de una ciudad distinta a la de la vivienda, elegida por el dueño.",
+      "explicacion": "En contratos con consumidores, la competencia territorial es el domicilio del inmueble o del consumidor; lo contrario es abusivo."
+    }
+  }
+}

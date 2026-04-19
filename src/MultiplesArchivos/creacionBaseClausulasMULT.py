@@ -26,7 +26,7 @@ def segmentar_contrato_legal(texto, nombre_archivo):
         
         lista_clausulas.append({
             "contrato_id": nombre_archivo,
-            "titulo": nombre_clausula,
+            "titulo": nombre_clausula.capitalize(),
             "contenido": contenido_clausula,
             "longitud": len(contenido_clausula)
         })
