@@ -1,16 +1,15 @@
 Cláusula,Dictamen,Confianza,Referencia,Justificación
-Primera.,✅ LEGAL,85.99%,El presente contrato se regirá por la Le...,La cláusula se ajusta a los estándares legales de referencia.
-Segunda.,🔍 REVISIÓN (Sospecha leve),72.75%,El contrato no se regirá por la Ley de A...,Posible conflicto: Es abusiva porque los derechos de la LAU son irrenunciables para el arrendatario en contratos de vivienda habitual (Art. 6 LAU).
-Tercera.,🔍 REVISIÓN (Sospecha leve),70.23%,Se establece duración temporal para evit...,Posible conflicto: El fraude en la causa de temporalidad convierte el contrato automáticamente en uno de vivienda habitual.
-Cuarta.,🔍 REVISIÓN (Sospecha leve),73.67%,El arrendador podrá usar la vivienda dur...,Posible conflicto: Vulnera el derecho a la inviolabilidad del domicilio y la exclusividad de uso otorgada por el alquiler.
-Quinta.,🔍 REVISIÓN (Sospecha leve),75.65%,Se establece duración temporal para evit...,Posible conflicto: El fraude en la causa de temporalidad convierte el contrato automáticamente en uno de vivienda habitual.
-Sexta.,🔍 REVISIÓN (Sospecha leve),76.95%,Se establece duración temporal para evit...,Posible conflicto: El fraude en la causa de temporalidad convierte el contrato automáticamente en uno de vivienda habitual.
-Séptima.,🔍 REVISIÓN (Sospecha leve),67.72%,El inquilino deberá pagar por adelantado...,Posible conflicto: El Art. 17.2 LAU prohíbe el pago anticipado de más de una mensualidad de renta.
-Octava.,✅ LEGAL,69.41%,La renta se actualizará anualmente confo...,La cláusula se ajusta a los estándares legales de referencia.
-Novena.,✅ LEGAL,59.94%,Los gastos por suministros con contador ...,La cláusula se ajusta a los estándares legales de referencia.
-Décima.,✅ LEGAL,71.27%,El arrendador depositará la fianza en el...,La cláusula se ajusta a los estándares legales de referencia.
-Undécima.,✅ LEGAL,72.61%,El arrendador podrá recuperar la viviend...,La cláusula se ajusta a los estándares legales de referencia.
-Duodécima.,🔍 REVISIÓN (Sospecha leve),76.65%,El contrato no se regirá por la Ley de A...,Posible conflicto: Es abusiva porque los derechos de la LAU son irrenunciables para el arrendatario en contratos de vivienda habitual (Art. 6 LAU).
-Décimo tercera.,✅ LEGAL,82.43%,No se podrá subarrendar sin autorización...,La cláusula se ajusta a los estándares legales de referencia.
-Décimo cuarta.,✅ LEGAL,70.87%,El contrato se prorrogará conforme a la ...,La cláusula se ajusta a los estándares legales de referencia.
-Décimo quinta.,✅ LEGAL,72.46%,El contrato se prorrogará conforme a la ...,La cláusula se ajusta a los estándares legales de referencia.
+PRIMERA.,🔍 REVISIÓN (Sospecha leve),73.33%,El contrato no se regirá por la Ley de A...,Posible conflicto: Es abusiva porque los derechos de la LAU son irrenunciables para el arrendatario en contratos de vivienda habitual (Art. 6 LAU).
+SEGUNDA.,✅ LEGAL,58.01%,"Al finalizar las prórrogas, operará la t...",La cláusula se ajusta a los estándares legales de referencia.
+TERCERA.,🔍 REVISIÓN (Sospecha leve),65.57%,El arrendatario entrega cinco meses de r...,Posible conflicto: La fianza 'legal' es obligatoriamente de un mes. Superar este límite sin llamarlo 'garantía adicional' es incorrecto.
+CUARTA.,✅ LEGAL,58.62%,Los gastos de gestión inmobiliaria y for...,La cláusula se ajusta a los estándares legales de referencia.
+QUINTA.,✅ LEGAL,79.90%,Los gastos por suministros con contador ...,La cláusula se ajusta a los estándares legales de referencia.
+SEXTA.,🔍 REVISIÓN (Baja confianza),40.40%,"Al finalizar las prórrogas, operará la t...",La cláusula se ajusta a los estándares legales de referencia.
+SÉPTIMA.,✅ LEGAL,69.04%,El arrendatario deberá cumplir las norma...,La cláusula se ajusta a los estándares legales de referencia.
+OCTAVA.,✅ LEGAL,84.27%,No se podrá subarrendar sin autorización...,La cláusula se ajusta a los estándares legales de referencia.
+NOVENA.,✅ LEGAL,60.37%,No se podrá subarrendar sin autorización...,La cláusula se ajusta a los estándares legales de referencia.
+DÉCIMA.,✅ LEGAL,64.86%,El arrendador depositará la fianza en el...,La cláusula se ajusta a los estándares legales de referencia.
+DÉCIMO PRIMERA.,✅ LEGAL,67.05%,Las notificaciones se realizarán en el d...,La cláusula se ajusta a los estándares legales de referencia.
+DÉCIMO SEGUNDA.,✅ LEGAL,61.61%,El contrato se prorrogará conforme a la ...,La cláusula se ajusta a los estándares legales de referencia.
+DÉCIMO TERCERA.,✅ LEGAL,55.88%,El contrato se prorrogará conforme a la ...,La cláusula se ajusta a los estándares legales de referencia.
+DÉCIMO CUARTA.,✅ LEGAL,60.40%,El contrato se prorrogará conforme a la ...,La cláusula se ajusta a los estándares legales de referencia.
