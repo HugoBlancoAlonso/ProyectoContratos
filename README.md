@@ -1,190 +1,92 @@
 # Proyecto de Analisis de Clausulas Contractuales
 
-Este repositorio procesa contratos de arrendamiento en español para:
+Aplicacion para subir un contrato PDF, extraer y segmentar clausulas, analizar abusividad con similitud semantica y mostrar resultados en Streamlit.
 
-1. Extraer texto desde PDF.
-2. Segmentar clausulas.
-3. Analizar similitud semantica contra un diccionario legal/no legal.
-4. Marcar clausulas con posible abusividad y generar justificacion.
-5. Ejecutar analisis exploratorio (EDA) y pre-anotacion NER basica.
+## Estructura actual
 
-## Estado actual del proyecto
+- [app/streamlit_app.py](app/streamlit_app.py): interfaz principal de Streamlit.
+- [src/pipeline/single_file/extraccionTexto.py](src/pipeline/single_file/extraccionTexto.py): extrae texto limpio de un PDF unico.
+- [src/pipeline/single_file/creacionBaseClausulas.py](src/pipeline/single_file/creacionBaseClausulas.py): segmenta el texto en clausulas.
+- [src/analysis/ner.py](src/analysis/ner.py): pre-anotacion basica con spaCy.
+- [src/analysis/motorDeSimilaridad.py](src/analysis/motorDeSimilaridad.py): clasificacion final con ChromaDB.
+- [data/clausulas.json](data/clausulas.json): diccionario de referencia legal/no legal.
+- [data/contratosParaAnalizar/](data/contratosParaAnalizar): carpeta de entrada y salida intermedia del contrato actual.
+- [data/prediccionAbusividad.csv](data/prediccionAbusividad.csv): resultado final del analisis.
+- [chroma_db/](chroma_db): base vectorial persistente de ChromaDB.
 
-- El flujo principal de clasificacion esta en src/motorDeSimilaridad.py.
-- Hay 2 flujos de preparacion de datos:
-1. Archivo unico: src/ArchivoUnico
-2. Multiples archivos: src/MultiplesArchivos
-- El directorio app/ esta vacio actualmente.
+## Flujo activo
 
-## Estructura relevante
+La app de Streamlit hace este proceso:
 
-- src/ArchivoUnico/extraccionTexto.py: extrae y limpia texto desde un PDF.
-- src/ArchivoUnico/creacionBaseClausulas.py: segmenta texto limpio en clausulas CSV.
-- src/MultiplesArchivos/extraccionTextoMULT.py: extrae y limpia varios PDF.
-- src/MultiplesArchivos/creacionBaseClausulasMULT.py: crea base consolidada desde varios TXT.
-- src/motorDeSimilaridad.py: indexa clausulas de referencia en Chroma y analiza contrato.
-- src/eda.py: estadisticas y graficas del corpus segmentado.
-- src/ner.py: pre-anotacion de entidades con spaCy Matcher.
-- data/clausulas.json: base de referencia legal/no legal.
-- data/contratosParaAnalizar/clausulas_contrato.csv: entrada principal del motor de similitud.
+1. El usuario sube un PDF.
+2. Se guarda en [data/contratosParaAnalizar/contrato.pdf](data/contratosParaAnalizar/contrato.pdf).
+3. Se ejecuta [src/pipeline/single_file/extraccionTexto.py](src/pipeline/single_file/extraccionTexto.py).
+4. Se ejecuta [src/pipeline/single_file/creacionBaseClausulas.py](src/pipeline/single_file/creacionBaseClausulas.py).
+5. Se ejecuta [src/analysis/ner.py](src/analysis/ner.py).
+6. Se ejecuta [src/analysis/motorDeSimilaridad.py](src/analysis/motorDeSimilaridad.py).
+7. Streamlit lee [data/prediccionAbusividad.csv](data/prediccionAbusividad.csv) y genera el EDA dinámico en pantalla.
 
 ## Requisitos
 
-- Windows (probado), Linux o macOS.
-- Python 3.10 o superior (recomendado 3.10-3.12).
-- Conexion a internet en la primera ejecucion para descargar modelos.
+- Windows, Linux o macOS.
+- Python 3.10 o superior.
+- Conectividad a internet en la primera ejecucion para descargar modelos de spaCy y SentenceTransformers.
 
 ## Instalacion
-
-Desde la raiz del proyecto, crea entorno virtual e instala dependencias.
-
-### PowerShell (Windows)
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install pandas chromadb sentence-transformers spacy pymupdf matplotlib seaborn
+pip install pandas chromadb sentence-transformers spacy pymupdf matplotlib seaborn streamlit
 python -m spacy download es_core_news_sm
 ```
 
-### Bash (Linux/macOS)
+## Ejecucion correcta
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install pandas chromadb sentence-transformers spacy pymupdf matplotlib seaborn
-python -m spacy download es_core_news_sm
-```
-
-## Flujo de ejecucion recomendado
-
-Importante: ejecuta siempre los scripts desde la raiz del repositorio para que las rutas relativas funcionen.
-
-### Opcion A: Analizar un solo contrato PDF
-
-1. Coloca el contrato en data/contratosParaAnalizar/ con nombre contrato.pdf.
-2. Extrae texto limpio:
+No ejecutes la app como script de Python. Streamlit debe arrancarse asi:
 
 ```powershell
-python src/ArchivoUnico/extraccionTexto.py
+python -m streamlit run app/streamlit_app.py
 ```
 
-3. Segmenta clausulas:
+Si usas directamente el ejecutable de Python:
 
 ```powershell
-python src/ArchivoUnico/creacionBaseClausulas.py
+c:\python313\python.exe -m streamlit run app\streamlit_app.py
 ```
 
-4. Ejecuta analisis de similitud y dictamen:
+El mensaje `missing ScriptRunContext` aparece cuando ejecutas Streamlit como un script normal, por ejemplo con `python app/streamlit_app.py`. Eso no es el modo correcto.
 
-```powershell
-python src/motorDeSimilaridad.py
-```
+## Salidas generadas
 
-Salida principal:
-- data/prediccionAbusividad.csv
+- [data/contratosParaAnalizar/contrato_limpio.txt](data/contratosParaAnalizar/contrato_limpio.txt): texto limpio extraido.
+- [data/contratosParaAnalizar/clausulas_contrato.csv](data/contratosParaAnalizar/clausulas_contrato.csv): clausulas segmentadas.
+- [data/prediccionAbusividad.csv](data/prediccionAbusividad.csv): dictamen final por clausula.
 
-### Opcion B: Procesar multiples contratos
+## Notas sobre ChromaDB
 
-1. Coloca todos los PDF en data/contratos/
-2. Extrae texto de todos los PDF:
-
-```powershell
-python src/MultiplesArchivos/extraccionTextoMULT.py
-```
-
-3. Crea base consolidada de clausulas:
-
-```powershell
-python src/MultiplesArchivos/creacionBaseClausulasMULT.py
-```
-
-Salida principal:
-- data/base_clausulas.csv
-
-## Analisis exploratorio (opcional)
-
-Genera resumen estadistico y graficas desde data/base_clausulas.csv:
-
-```powershell
-python src/eda.py
-```
-
-Archivos generados:
-- data/eda_longitud.png
-- data/eda_frecuencia.png
-
-## NER basico (opcional)
-
-Ejecuta patrones para montos, duracion, jurisdiccion y partes:
-
-```powershell
-python src/ner.py
-```
-
-Nota: src/ner.py actualmente apunta por defecto a data/contratosLimpios/contrato_limpio_completo2.txt. Si quieres otro archivo, cambia la variable ruta_archivo dentro del script.
-
-## Base vectorial ChromaDB
-
-El motor usa persistencia local en chroma_db/.
-
-- Primera ejecucion: indexa data/clausulas.json.
-- Ejecuciones siguientes: reutiliza la base existente.
-
-Si cambias estructura o metadatos en data/clausulas.json (por ejemplo, agregas explicacion/justificacion), elimina la carpeta chroma_db y vuelve a ejecutar:
-
-```powershell
-Remove-Item -Recurse -Force chroma_db
-python src/motorDeSimilaridad.py
-```
-
-## Formato esperado de datos
-
-### Entrada del motor de similitud
-
-Archivo: data/contratosParaAnalizar/clausulas_contrato.csv
-
-Columnas minimas requeridas:
-- titulo
-- contenido
-
-### Diccionario de referencia
-
-Archivo: data/clausulas.json
-
-Estructura por entrada:
-- valor: boolean (true/false)
-- ejemplo: string
-- explicacion: string opcional (recomendado para casos no legales)
+- La primera ejecucion crea o actualiza la base en [chroma_db/](chroma_db).
+- Si cambias [data/clausulas.json](data/clausulas.json), elimina [chroma_db/](chroma_db) para forzar un reindexado.
 
 ## Solucion de problemas
 
-1. Error con spaCy model not found:
+1. Si falta spaCy en español:
 
 ```powershell
 python -m spacy download es_core_news_sm
 ```
 
-2. Error de rutas (archivo no encontrado):
-- Verifica que estas en la raiz del proyecto al ejecutar los scripts.
-
-3. Error al importar fitz:
+2. Si falla la libreria PyMuPDF:
 
 ```powershell
 pip install pymupdf
 ```
 
-4. Chroma no refleja cambios del JSON:
-- Borra chroma_db y vuelve a correr src/motorDeSimilaridad.py.
+3. Si Streamlit no abre en el navegador:
+- Usa `python -m streamlit run app/streamlit_app.py` desde la raiz del proyecto.
 
-## Roadmap de documentacion
+## Estado del proyecto
 
-Este README es la base inicial. En futuras iteraciones se puede ampliar con:
-
-1. requirements.txt o pyproject.toml.
-2. Script unico de orquestacion del pipeline.
-3. Pruebas automatizadas.
-4. App interactiva en la carpeta app/.
+Actualmente el proyecto esta centrado en la app de Streamlit y en el flujo de analisis de un unico contrato. Las capas de API y generador interactivo se pueden añadir despues sin cambiar este flujo base.
 
