@@ -1,13 +1,4 @@
-# ======================================================
-# app/streamlit_app.py
-# VERSION FINAL PROFESIONAL
-# - No muestra logs durante análisis
-# - Barra progreso limpia
-# - Resultados completos
-# - Tabla bonita
-# - Todas las cláusulas
-# - Gráficas correctas
-# ======================================================
+
 
 import streamlit as st
 import pandas as pd
@@ -21,9 +12,7 @@ import sys
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-# ------------------------------------------------
-# CONFIG
-# ------------------------------------------------
+
 
 st.set_page_config(
     page_title="Analizador IA de Contratos",
@@ -34,9 +23,6 @@ st.set_page_config(
 st.title("📄 Analizador Inteligente de Contratos")
 st.write("Sube un contrato PDF y analiza cláusulas automáticamente.")
 
-# ------------------------------------------------
-# FUNCIONES
-# ------------------------------------------------
 
 def limpiar_texto(txt):
     try:
@@ -79,9 +65,7 @@ def mostrar_graficos(df):
 
     sns.set_theme(style="whitegrid")
 
-    # --------------------------------------
-    # LONGITUD CLAUSULAS
-    # --------------------------------------
+
 
     if "titulo" in df.columns and "longitud" in df.columns:
 
@@ -104,9 +88,7 @@ def mostrar_graficos(df):
         st.subheader("📊 Longitud cláusulas")
         st.pyplot(fig)
 
-    # --------------------------------------
-    # FRECUENCIA PALABRAS
-    # --------------------------------------
+
 
     texto = " ".join(df["contenido"].astype(str)).lower()
 
@@ -144,18 +126,14 @@ def mostrar_graficos(df):
         st.subheader("📈 Frecuencia palabras")
         st.pyplot(fig2)
 
-# ------------------------------------------------
-# SUBIR PDF
-# ------------------------------------------------
+
 
 archivo = st.file_uploader(
     "Subir contrato PDF",
     type=["pdf"]
 )
 
-# ------------------------------------------------
-# SI HAY PDF
-# ------------------------------------------------
+
 
 if archivo:
 
@@ -202,9 +180,7 @@ if archivo:
 
         st.success("✅ Análisis completado")
 
-        # ------------------------------------------------
-        # RESULTADOS
-        # ------------------------------------------------
+    
 
         ruta_csv = "data/prediccionAbusividad.csv"
 
@@ -238,9 +214,7 @@ if archivo:
                     mime="text/csv"
                 )
 
-        # ------------------------------------------------
-        # CLAUSULAS
-        # ------------------------------------------------
+        
 
         ruta_clausulas = "data/contratosParaAnalizar/clausulas_contrato.csv"
 
