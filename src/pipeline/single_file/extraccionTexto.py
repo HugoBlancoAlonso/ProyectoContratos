@@ -1,6 +1,7 @@
 import fitz  # PyMuPDF
 import re
-
+import sys
+sys.stdout.reconfigure(encoding="utf-8")
 def extraer_texto_legal_pro(ruta_pdf):
     """
     Extrae texto eliminando superíndices y ruidos mediante

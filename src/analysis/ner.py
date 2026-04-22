@@ -1,7 +1,8 @@
 import spacy
 from spacy.matcher import Matcher
 import json
-
+import sys
+sys.stdout.reconfigure(encoding="utf-8")
 # Forzamos la carga del modelo en español para que entienda la gramática
 try:
     nlp = spacy.load("es_core_news_sm")
@@ -56,7 +57,7 @@ def pre_anotar(texto):
     return {"label": anotaciones}
 
 # --- EJECUCIÓN ---
-ruta_archivo = "data/contratosLimpios/contrato_limpio_completo2.txt"
+ruta_archivo = "data/contratosParaAnalizar/contrato_limpio.txt"
 
 try:
     with open(ruta_archivo, "r", encoding="utf-8") as f:

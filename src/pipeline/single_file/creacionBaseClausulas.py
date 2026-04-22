@@ -1,49 +1,103 @@
 import pandas as pd
 import re
 import os
+import sys
 
-def segmentar_contrato_legal(texto, nombre_archivo):
-    # 1. Definimos los encabezados de las cláusulas (del Primera al Vigésima)
-    patron_clausulas = r'(Primera|Segunda|Tercera|Cuarta|Quinta|Sexta|Séptima|Octava|Novena|Décima|Undécima|Duodécima|Décimo\s+primera|Décimo\s+segunda|Décimo\s+tercera|Décimo\s+cuarta|Décimo\s+quinta|Décimo\s+sexta|Décimo\s+séptima|Décimo\s+octava|Décimo\s+novena|Vigésima|Vigésimo\s+primera|Vigésimo\s+segunda|Vigésimo\s+tercera|Vigésimo\s+cuarta|Vigésimo\s+quinta)\.'
+sys.stdout.reconfigure(encoding="utf-8")
 
-    # 2. Buscamos las posiciones de todos los encabezados
-    iter_clausulas = list(re.finditer(patron_clausulas, texto, re.IGNORECASE))
-    lista_clausulas = []
 
-    for i in range(len(iter_clausulas)):
-        # Inicio de la cláusula actual
-        inicio = iter_clausulas[i].start()
-        nombre_clausula = iter_clausulas[i].group()
+def segmentar_clausulas(texto, nombre_archivo):
 
-        # El final es el inicio de la siguiente cláusula (o el final del texto)
-        fin = iter_clausulas[i+1].start() if i + 1 < len(iter_clausulas) else len(texto) 
-        contenido_clausula = texto[inicio:fin].strip()
- 
-        # Limpiamos un poco el contenido
-        contenido_clausula = re.sub(r'\s+', ' ', contenido_clausula)
-        lista_clausulas.append({
+    # ----------------------------------------
+    # REGEX MEJORADO
+    # ----------------------------------------
+
+    patron = r"""
+    (
+        CLAUSULA\s+[A-ZÁÉÍÓÚÑ]+ |
+        CLÁUSULA\s+[A-ZÁÉÍÓÚÑ]+ |
+        PRIMERA[\.\:\-] |
+        SEGUNDA[\.\:\-] |
+        TERCERA[\.\:\-] |
+        CUARTA[\.\:\-] |
+        QUINTA[\.\:\-] |
+        SEXTA[\.\:\-] |
+        SEPTIMA[\.\:\-] |
+        SÉPTIMA[\.\:\-] |
+        OCTAVA[\.\:\-] |
+        NOVENA[\.\:\-] |
+        DECIMA[\.\:\-] |
+        DÉCIMA[\.\:\-] |
+        \n\d+\.\s+[A-Z]
+    )
+    """
+
+    matches = list(
+        re.finditer(
+            patron,
+            texto,
+            re.IGNORECASE | re.VERBOSE
+        )
+    )
+
+    clausulas = []
+
+    # Si no detecta nada
+    if len(matches) == 0:
+
+        clausulas.append({
             "contrato_id": nombre_archivo,
-            "titulo": nombre_clausula,
-            "contenido": contenido_clausula,
-            "longitud": len(contenido_clausula)
+            "titulo": "CONTRATO_COMPLETO",
+            "contenido": texto,
+            "longitud": len(texto)
         })
 
-    return pd.DataFrame(lista_clausulas)
+        return pd.DataFrame(clausulas)
 
-# --- EJECUCIÓN ---
-ruta_archivo = "data/contratosParaAnalizar/contrato_limpio.txt"
+    # Detectar todas
+    for i in range(len(matches)):
 
-if os.path.exists(ruta_archivo):
-    with open(ruta_archivo, "r", encoding="utf-8") as f:
-        contenido_completo = f.read()
-   
-    # Generar la base de datos real
-    df_clausulas = segmentar_contrato_legal(contenido_completo, "contrato_01.txt")
-   
-    # Guardar
-    df_clausulas.to_csv("data/contratosParaAnalizar/clausulas_contrato.csv", index=False, encoding="utf-8")
-    print(f"✅ ¡Ahora sí! Se han extraído {len(df_clausulas)} cláusulas correctamente.")
-    print(df_clausulas[['titulo', 'longitud']].head(15)) # Vista rápida
+        inicio = matches[i].start()
+        titulo = matches[i].group().strip()
+
+        if i + 1 < len(matches):
+            fin = matches[i + 1].start()
+        else:
+            fin = len(texto)
+
+        contenido = texto[inicio:fin].strip()
+        contenido = re.sub(r"\s+", " ", contenido)
+
+        clausulas.append({
+            "contrato_id": nombre_archivo,
+            "titulo": titulo,
+            "contenido": contenido,
+            "longitud": len(contenido)
+        })
+
+    return pd.DataFrame(clausulas)
+
+
+# ----------------------------------------
+# EJECUCIÓN
+# ----------------------------------------
+
+ruta = "data/contratosParaAnalizar/contrato_limpio.txt"
+
+if os.path.exists(ruta):
+
+    with open(ruta, "r", encoding="utf-8") as f:
+        texto = f.read()
+
+    df = segmentar_clausulas(texto, "contrato_01")
+
+    df.to_csv(
+        "data/contratosParaAnalizar/clausulas_contrato.csv",
+        index=False,
+        encoding="utf-8"
+    )
+
+    print(f"Detectadas {len(df)} clausulas")
 
 else:
-    print("No se encontró el archivo de texto.")
+    print("No existe contrato_limpio.txt")
