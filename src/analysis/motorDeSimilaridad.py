@@ -4,6 +4,8 @@ import chromadb
 from chromadb.utils import embedding_functions
 from sentence_transformers import SentenceTransformer
 import os
+import sys
+sys.stdout.reconfigure(encoding="utf-8")
 
 # 1. Configuración del Modelo de Embeddings
 model_name = 'paraphrase-multilingual-MiniLM-L12-v2'
