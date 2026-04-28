@@ -2,6 +2,33 @@ import fitz  # PyMuPDF
 import re
 import sys
 sys.stdout.reconfigure(encoding="utf-8")
+
+
+def _unir_titulo_con_subclausula(texto_pagina):
+    """
+    Une títulos de cláusula con la primera subcláusula numerada siguiente.
+    Ejemplo: "Clausula 2\n2.1 ..." -> "Clausula 2 2.1 ..."
+    """
+    lineas = [linea.strip() for linea in texto_pagina.splitlines()]
+    lineas = [linea for linea in lineas if linea]
+    resultado = []
+    i = 0
+
+    while i < len(lineas):
+        linea_actual = lineas[i]
+        linea_siguiente = lineas[i + 1] if i + 1 < len(lineas) else ""
+
+        if re.match(r'(?i)^cl[áa]usula\s+.+$', linea_actual) and re.match(r'^\d+(?:\.\d+)*\b', linea_siguiente):
+            resultado.append(f"{linea_actual} {linea_siguiente}")
+            i += 2
+            continue
+
+        resultado.append(linea_actual)
+        i += 1
+
+    return "\n".join(resultado)
+
+
 def extraer_texto_legal_pro(ruta_pdf):
     """
     Extrae texto eliminando superíndices y ruidos mediante
@@ -50,6 +77,7 @@ def extraer_texto_legal_pro(ruta_pdf):
             texto_pagina = re.sub(r'(?i)p[áa]gina\s+\d+\s+de\s+\d+', '', texto_pagina)
             # Normalizar saltos de línea y espacios
             texto_pagina = re.sub(r' {2,}', ' ', texto_pagina)
+            texto_pagina = _unir_titulo_con_subclausula(texto_pagina)
             texto_final.append(texto_pagina)
 
         # Unir y limpiar espacios en blanco excesivos

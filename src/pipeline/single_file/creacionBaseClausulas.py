@@ -12,25 +12,10 @@ def segmentar_clausulas(texto, nombre_archivo):
     # REGEX MEJORADO
     # ----------------------------------------
 
-    patron = r"""
-    (
-        CLAUSULA\s+[A-ZÁÉÍÓÚÑ]+ |
-        CLÁUSULA\s+[A-ZÁÉÍÓÚÑ]+ |
-        PRIMERA[\.\:\-] |
-        SEGUNDA[\.\:\-] |
-        TERCERA[\.\:\-] |
-        CUARTA[\.\:\-] |
-        QUINTA[\.\:\-] |
-        SEXTA[\.\:\-] |
-        SEPTIMA[\.\:\-] |
-        SÉPTIMA[\.\:\-] |
-        OCTAVA[\.\:\-] |
-        NOVENA[\.\:\-] |
-        DECIMA[\.\:\-] |
-        DÉCIMA[\.\:\-] |
-        \n\d+\.\s+[A-Z]
-    )
-    """
+    patron = r"""(CLAUSULA\s+[A-ZÁÉÍÓÚÑ]+|CLÁUSULA\s+[A-ZÁÉÍÓÚÑ]+|(PRIMER|SEGUND|TERCER|CUART|QUINT|SEXT|SEPTIM|SÉPTIM|OCTAV|NOVEN|DECIM|DÉCIM)A[\.\:\-]|
+        (DECIMO|DÉCIMO)\s*(PRIMER|SEGUND|TERCER|CUART|QUINT|SEXT|SEPTIM|SÉPTIM|OCTAV|NOVEN)A[\.\:\-]|
+        (VIGESIM|VIGÉSIM)A[\.\:\-]|(VIGESIMO|VIGÉSIMO)\s*(PRIMER|SEGUND|TERCER|CUART|QUINT)A[\.\:\-]|
+        (?-i:\n\d+\.\s+[A-ZÁÉÍÓÚÑ][A-ZÁÉÍÓÚÑ0-9\s\.,;:\-]{2,120}))"""
 
     matches = list(
         re.finditer(
