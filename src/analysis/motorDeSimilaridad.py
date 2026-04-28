@@ -82,7 +82,7 @@ for _, row in df_contrato.iterrows():
     score, es_legal_ref, ref_txt, por_que = analizar_con_chroma(row['contenido'])
     
     if es_legal_ref:
-        dictamen = "✅ LEGAL" if score >= UMBRAL_LEGAL else "🔍 REVISIÓN (Baja confianza)"
+        dictamen = "✅ LEGAL" if score >= UMBRAL_LEGAL else "🔍 REVISIÓN (Potencialmente legal)"
         # Si es legal, la justificación suele ser informativa
         razon = "La cláusula se ajusta a los estándares legales de referencia."
     else:
