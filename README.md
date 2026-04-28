@@ -18,6 +18,7 @@ Aplicacion para subir un contrato PDF, extraer y segmentar clausulas, analizar a
 ## Flujo activo
 
 La app de Streamlit hace este proceso:
+
 0.  Activar Streamlit  `python -m streamlit run app/streamlit_app.py `
 1. El usuario sube un PDF.
 2. Se guarda en [data/contratosParaAnalizar/contrato.pdf](data/contratosParaAnalizar/contrato.pdf).
