@@ -24,24 +24,8 @@ def segmentar_clausulas(texto, nombre_archivo):
     # 1. OBJETO
     # --------------------------------------------------
 
-    patron = r"""
-    (
-        CLAUSULA\s+[A-ZÁÉÍÓÚÑ]+ |
-        CLÁUSULA\s+[A-ZÁÉÍÓÚÑ]+ |
+    patron = r"(Primera|Segunda|Tercera|Cuarta|Quinta|Sexta|Séptima|Octava|Novena|Décima|Undécima|Duodécima|Décimo\s+primera|Décimo\s+segunda|Décimo\s+tercera|Décimo\s+cuarta|Décimo\s+quinta|Décimo\s+sexta|Décimo\s+séptima|Décimo\s+octava|Décimo\s+novena|Vigésima|Vigésimo\s+primera|Vigésimo\s+segunda|Vigésimo\s+tercera|Vigésimo\s+cuarta|Vigésimo\s+quinta)\."
 
-        (PRIMER|SEGUND|TERCER|CUART|QUINT|SEXT|SEPTIM|SÉPTIM|OCTAV|NOVEN|DECIM|DÉCIM)A[\.\:\-] |
-
-        (DECIMO|DÉCIMO)\s*
-        (PRIMER|SEGUND|TERCER|CUART|QUINT|SEXT|SEPTIM|SÉPTIM|OCTAV|NOVEN)A[\.\:\-] |
-
-        (VIGESIM|VIGÉSIM)A[\.\:\-] |
-
-        (VIGESIMO|VIGÉSIMO)\s*
-        (PRIMER|SEGUND|TERCER|CUART|QUINT)A[\.\:\-] |
-
-        \n\d+\.\s+[A-ZÁÉÍÓÚÑ][A-ZÁÉÍÓÚÑ0-9\s\.,;:\-]{2,120}
-    )
-    """
 
     matches = list(
         re.finditer(
