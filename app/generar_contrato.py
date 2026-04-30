@@ -60,10 +60,10 @@ def generar_pdf_contrato(datos):
     # --- SECCIÓN REUNIDOS ---
     pdf.titulo_seccion("REUNIDOS")
     reunidos_texto = (
-        f"De una parte, y como arrendador, persona física, D/Dña. {datos["nombreV"]} {datos["apellidoV"]}, mayor de edad, "
+        f"De una parte, y como arrendador, persona física, D/Dña. {datos["nombreV"]} {datos["apellidosV"]}, mayor de edad, "
         f"domiciliado/a en {datos["direccionV"]} y con NIF nº {datos["dniV"]} Y con datos de contacto a efectos de "
         f"notificaciones: correo electrónico: {datos["emailV"]} y número de teléfono: {datos["telefonoV"]}\n\n"
-        f"De otra parte, y como arrendatario, D/Dña. {datos["nombreC"]} {datos["apellidoC"]} mayor de edad, con NIF {datos["dniC"]} "
+        f"De otra parte, y como arrendatario, D/Dña. {datos["nombreC"]} {datos["apellidosC"]} mayor de edad, con NIF {datos["dniC"]} "
         f"con domicilio a efectos de notificaciones en la vivienda objeto de arrendamiento. Y con datos "
         f"de contacto a efectos de notificaciones: correo electrónico: {datos["emailC"]} y número de teléfono: {datos["telefonoC"]}\n\n"
         f"Ambas partes se reconocen la capacidad legalmente necesaria para el otorgamiento del presente contrato de arrendamiento."
@@ -117,7 +117,7 @@ def generar_pdf_contrato(datos):
         "antelación a la fecha de terminación de cualquiera de las anualidades, su voluntad de no renovar el contrato.")
 
     pdf.clausula("Quinta. Renta", 
-        f"Se fija como renta mensual la cantidad de {datos["precio"]}€. Se pagará mensualmente por meses anticipados, dentro de los siete primeros días de "
+        f"Se fija como renta mensual la cantidad de {datos["precio"]} euros. Se pagará mensualmente por meses anticipados, dentro de los siete primeros días de "
         f"cada mes, mediante ingreso en metálico o transferencia bancaria a favor del Arrendador en la cuenta que a nombre de este último y con el nº "
         f"{datos["numeroBancoV"]} existe en el Banco {datos["bancoV"]}, sucursal nº {datos["sucursalV"]} .\n\n"
         "El pago se acreditará de manera suficiente mediante el oportuno resguardo del ingreso o transferencia realizados o, si se paga en metálico, "

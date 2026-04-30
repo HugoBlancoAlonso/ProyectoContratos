@@ -55,4 +55,29 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 pip install pandas chromadb sentence-transformers spacy pymupdf matplotlib seaborn streamlit fastapi uvicorn python-multipart
-python -m spacy download es_core_news_sm
+python -m spacy download es_core_news_sm 
+```
+
+
+
+
+
+Desde la carpeta del proyecto, abre dos terminales y ejecuta esto en este orden:
+
+API
+python.exe -m uvicorn app.api:app --host 0.0.0.0 --port 8000
+
+Streamlit
+python.exe -m streamlit run streamlit_app.py
+
+Si quieres recargar cambios en desarrollo, puedes usar en la API:
+python.exe -m uvicorn app.api:app --reload --host 0.0.0.0 --port 8000
+
+
+
+python -m uvicorn app.api:app --host 0.0.0.0 --port 8000
+
+python -m streamlit run app/streamlit_app.py
+
+
+python -m uvicorn app.api:app --reload --host 0.0.0.0 --port 8000
